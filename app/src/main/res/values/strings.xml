@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Alternote</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="quick_note">Type a note here...</string>
     <string name="action_settings">Settings</string>
 </resources>
