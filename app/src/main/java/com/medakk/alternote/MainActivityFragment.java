@@ -39,7 +39,8 @@ public class MainActivityFragment extends Fragment {
         // Create a TextView to display when there are no notes to display
         final TextView tvEmptyListMsg = new TextView(getActivity());
         tvEmptyListMsg.setText(R.string.empty_list);
-        lvNotes.setEmptyView(tvEmptyListMsg); //TODO: EmptyView isn't being displayed :/
+        ((ViewGroup) lvNotes.getParent()).addView(tvEmptyListMsg);
+        lvNotes.setEmptyView(tvEmptyListMsg);
 
         // set the adapter for lvNotes
         final NotesAdapter notesAdapter = new NotesAdapter(getActivity());
