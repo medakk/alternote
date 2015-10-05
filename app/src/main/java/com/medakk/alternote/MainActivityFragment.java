@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A placeholder fragment containing a simple view.
+/*
+ * MainActivityFragment
+ *  displays the list of entered notes,
+ *  permits addition/removal of notes
  */
 public class MainActivityFragment extends Fragment {
 
