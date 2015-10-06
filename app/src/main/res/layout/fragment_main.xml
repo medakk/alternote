@@ -21,7 +21,8 @@
             android:hint="@string/quick_note"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"/>
 
         <ImageButton
             android:id="@+id/main_ibtn_addquicknote"
@@ -43,8 +44,9 @@
 
     <ListView
         android:id="@+id/main_lv_notes"
+        android:padding="6dp"
         android:layout_weight="1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"/>
 
 </LinearLayout>

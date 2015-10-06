@@ -6,6 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.medakk.alternote.R;
+import com.medakk.alternote.note.Note;
+import com.medakk.alternote.note.NoteManager;
+
 /**
  * NotesAdapter
  *  -used to populate lvNotes in MainActivityFragment
@@ -13,19 +17,26 @@ import android.widget.TextView;
 public class NotesAdapter extends BaseAdapter {
 
     private Context context;
+    private NoteManager noteManager;
 
     public NotesAdapter(Context context) {
         this.context = context;
+        noteManager = NoteManager.getNoteManager();
+    }
+
+    public void addNote(Note n) {
+        noteManager.addNote(n);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return noteManager.getSize();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return noteManager.getNote(position);
     }
 
     @Override
@@ -36,9 +47,16 @@ public class NotesAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {
-            convertView = new TextView(context);
+            convertView = View.inflate(context, R.layout.lvitem_note, null);
         }
-        ((TextView)convertView).setText("afsf" + position);
+
+        final TextView tvTitle = (TextView) convertView.findViewById(R.id.lvitem_note_title);
+        final TextView tvContent = (TextView) convertView.findViewById(R.id.lvitem_note_content);
+
+        Note n = (Note) getItem(position);
+        tvTitle.setText(n.getTitle());
+        tvContent.setText(n.getContent());
+
         return convertView;
     }
 }
