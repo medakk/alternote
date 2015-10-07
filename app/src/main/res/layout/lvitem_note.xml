@@ -9,7 +9,6 @@
         android:id="@+id/lvitem_note_title"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginLeft="6dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
@@ -17,6 +16,7 @@
         android:text="content...\nmore content...\neven more content..."
         android:id="@+id/lvitem_note_content"
         android:textSize="14sp"
+        android:layout_marginLeft="6dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 

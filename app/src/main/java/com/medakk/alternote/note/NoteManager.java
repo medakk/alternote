@@ -2,14 +2,17 @@ package com.medakk.alternote.note;
 
 import android.util.Log;
 
+import com.medakk.alternote.util.Helper;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Maintains list of Notes
  * Singleton class
  */
-public class NoteManager {
-    private ArrayList<Note> alNotes;
+public class NoteManager implements Iterable<SimpleNote> {
+    private ArrayList<SimpleNote> alNotes;
 
     // Singleton methods
     private static NoteManager me;
@@ -29,16 +32,26 @@ public class NoteManager {
         return alNotes.size();
     }
 
-    public void addNote(Note n) {
+    public void addNote(SimpleNote n) {
         if(n == null) {
             Log.d("NoteManager", "Attempting to add null note");
+            return;
+        }
+
+        //make sure there is some content in the note's title, ie: it isn't just whitespace
+        if(Helper.onlyContainsWhitespace(n.getTitle())) {
             return;
         }
 
         alNotes.add(n);
     }
 
-    public Note getNote(int n) {
+    public SimpleNote getNote(int n) {
         return alNotes.get(n);
+    }
+
+    @Override
+    public Iterator<SimpleNote> iterator() {
+        return alNotes.iterator();
     }
 }

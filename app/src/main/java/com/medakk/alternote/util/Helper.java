@@ -7,6 +7,8 @@ package com.medakk.alternote.util;
  */
 public class Helper {
 
+    private static final String WHITESPACE = " \n\t";
+
     /*
      *  takes a String and splits the first line
      *  and the rest of the String. Returns an array
@@ -37,5 +39,15 @@ public class Helper {
         }
 
         return out;
+    }
+
+    public static boolean onlyContainsWhitespace(String src) {
+        for(int i = 0; i<src.length(); i++) {
+            final char c = src.charAt(i);
+            if(WHITESPACE.indexOf(c) == -1) { //found a character which isn't whitespace
+                return false;
+            }
+        }
+        return true;
     }
 }

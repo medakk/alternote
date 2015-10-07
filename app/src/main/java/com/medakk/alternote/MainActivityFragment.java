@@ -11,11 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.medakk.alternote.note.Note;
+import com.medakk.alternote.note.SimpleNote;
 import com.medakk.alternote.uihelper.NotesAdapter;
+import com.medakk.alternote.uihelper.SaveAndLoad;
 import com.medakk.alternote.util.Helper;
-
-import java.util.Scanner;
 
 
 /*
@@ -60,11 +59,24 @@ public class MainActivityFragment extends Fragment {
                 String noteText = etQuickNote.getText().toString();
                 String[] splitText = Helper.splitTitleAndContent(noteText);
 
-                Note n = new Note(splitText[0], splitText[1]);
+                SimpleNote n = new SimpleNote(splitText[0], splitText[1]);
                 notesAdapter.addNote(n);
+
+                //clear the EditText box
+                etQuickNote.setText("");
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        final SaveAndLoad.SaveNotesAsync saveNotesAsync =
+                new SaveAndLoad.SaveNotesAsync(getActivity());
+        saveNotesAsync.execute();
+
     }
 }

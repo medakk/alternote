@@ -19,6 +19,7 @@
         <EditText
             android:id="@+id/main_et_quicknote"
             android:hint="@string/quick_note"
+            android:inputType="textCapSentences|textMultiLine|textAutoCorrect"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

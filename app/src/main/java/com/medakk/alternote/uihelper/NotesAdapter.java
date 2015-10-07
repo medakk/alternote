@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.medakk.alternote.R;
-import com.medakk.alternote.note.Note;
+import com.medakk.alternote.note.SimpleNote;
 import com.medakk.alternote.note.NoteManager;
 
 /**
@@ -24,9 +24,9 @@ public class NotesAdapter extends BaseAdapter {
         noteManager = NoteManager.getNoteManager();
     }
 
-    public void addNote(Note n) {
+    public void addNote(SimpleNote n) {
         noteManager.addNote(n);
-        notifyDataSetChanged();
+        super.notifyDataSetChanged();
     }
 
     @Override
@@ -53,7 +53,7 @@ public class NotesAdapter extends BaseAdapter {
         final TextView tvTitle = (TextView) convertView.findViewById(R.id.lvitem_note_title);
         final TextView tvContent = (TextView) convertView.findViewById(R.id.lvitem_note_content);
 
-        Note n = (Note) getItem(position);
+        SimpleNote n = (SimpleNote) getItem(position);
         tvTitle.setText(n.getTitle());
         tvContent.setText(n.getContent());
 
