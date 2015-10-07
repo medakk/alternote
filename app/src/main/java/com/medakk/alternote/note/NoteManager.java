@@ -46,8 +46,20 @@ public class NoteManager implements Iterable<SimpleNote> {
         alNotes.add(n);
     }
 
+    public void removeNote(int index) {
+        alNotes.remove(index);
+    }
+
+    public void removeNote(SimpleNote n) {
+        alNotes.remove(n);
+    }
+
     public SimpleNote getNote(int n) {
         return alNotes.get(n);
+    }
+
+    public void clear() {
+        alNotes.clear();
     }
 
     @Override

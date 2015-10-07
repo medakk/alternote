@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <TextView
         android:text="Title"
-        android:id="@+id/lvitem_note_title"
+        android:id="@+id/lvitem_tv_note_title"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/lvitem_ibtn_delete"
+        android:src="@drawable/delete_button"
+        android:background="#00000000"
+        android:layout_alignTop="@id/lvitem_tv_note_title"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"/>
+
+
 
     <TextView
         android:text="content...\nmore content...\neven more content..."
-        android:id="@+id/lvitem_note_content"
+        android:id="@+id/lvitem_tv_note_content"
         android:textSize="14sp"
-        android:layout_marginLeft="6dp"
+        android:layout_below="@id/lvitem_tv_note_title"
+        android:layout_marginLeft="8dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+</RelativeLayout>

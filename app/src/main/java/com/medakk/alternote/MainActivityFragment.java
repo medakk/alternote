@@ -67,6 +67,10 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
+        //start an AsyncTask to load the notes from the saved JSON file
+        SaveAndLoad.LoadAsyncTask loadAsyncTask = new SaveAndLoad.LoadAsyncTask(getActivity(), notesAdapter);
+        loadAsyncTask.execute();
+
         return v;
     }
 
