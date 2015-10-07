@@ -23,14 +23,10 @@ public class Helper {
         final int srcLength = src.length();
         String[] out = new String[2];
 
-        int firstNewLinePosition = 0;
-        while(firstNewLinePosition < srcLength &&
-                src.charAt(firstNewLinePosition) != '\n') {
-            firstNewLinePosition++;
-        }
+        int firstNewLinePosition = src.indexOf('\n');
 
         //the given String contains only one line
-        if(firstNewLinePosition == srcLength) {
+        if(firstNewLinePosition == -1) {
             out[0] = src;
             out[1] = "";
         } else {
