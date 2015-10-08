@@ -73,14 +73,7 @@ public class NotesAdapter extends BaseAdapter implements View.OnClickListener{
     public void onClick(View v) {
         UUID uuid = (UUID) v.getTag();
 
-        int foundNoteIndex = -1;
-        final int size = noteManager.getSize();
-        for(int i = 0; i<size; i++) {
-            if(noteManager.getNote(i).getUuid().equals(uuid)) {
-                foundNoteIndex = i;
-                break;
-            }
-        }
+        int foundNoteIndex = noteManager.findNoteByUuid(uuid);
 
         if(foundNoteIndex != -1) {
             noteManager.removeNote(foundNoteIndex);

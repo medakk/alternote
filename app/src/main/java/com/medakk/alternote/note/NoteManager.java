@@ -6,6 +6,7 @@ import com.medakk.alternote.util.Helper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.UUID;
 
 /**
  * Maintains list of Notes
@@ -60,6 +61,19 @@ public class NoteManager implements Iterable<SimpleNote> {
 
     public void clear() {
         alNotes.clear();
+    }
+
+    public int findNoteByUuid(UUID uuid) {
+        int foundNoteIndex = -1;
+        final int size = getSize();
+        for(int i = 0; i<size; i++) {
+            if(getNote(i).getUuid().equals(uuid)) {
+                foundNoteIndex = i;
+                break;
+            }
+        }
+
+        return foundNoteIndex;
     }
 
     @Override
