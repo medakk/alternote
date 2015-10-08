@@ -3,27 +3,21 @@ package com.medakk.alternote.uihelper;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.medakk.alternote.R;
-import com.medakk.alternote.note.SimpleNote;
 import com.medakk.alternote.note.NoteManager;
+import com.medakk.alternote.note.SimpleNote;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
 public class SaveAndLoad {
 
@@ -131,7 +125,7 @@ public class SaveAndLoad {
 
             try {
                 JSONArray jsonArray = (JSONArray) (new JSONTokener(sb.toString())).nextValue();
-                int size = jsonArray.getInt(0); //TODO: this assumes that the first object is the size.
+                int size = jsonArray.getInt(0); //TODO: this assumes that the first object is the size.it shoudln't
 
                 for(int i = 1; i<size+1; i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);

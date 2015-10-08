@@ -1,11 +1,13 @@
 package com.medakk.alternote;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -22,14 +24,14 @@ import com.medakk.alternote.util.Helper;
  *  displays the list of entered notes,
  *  permits addition/removal of notes
  */
-public class MainActivityFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     private EditText etQuickNote;
     private ImageButton ibtnAddQuickNote;
     private ListView lvNotes;
     private NotesAdapter notesAdapter;
 
-    public MainActivityFragment() {
+    public MainFragment() {
     }
 
     @Override
@@ -52,6 +54,15 @@ public class MainActivityFragment extends Fragment {
         notesAdapter = new NotesAdapter(getActivity());
         lvNotes.setAdapter(notesAdapter);
 
+        //start NoteActivity when a list item is pressed
+        lvNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Intent i = new Intent(getActivity(), NoteActivity.class);
+                startActivity(i);
+            }
+        });
+
         // create a new note when ibtnAddQuickNote is pressed
         ibtnAddQuickNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +81,6 @@ public class MainActivityFragment extends Fragment {
         //start an AsyncTask to load the notes from the saved JSON file
         SaveAndLoad.LoadAsyncTask loadAsyncTask = new SaveAndLoad.LoadAsyncTask(getActivity(), notesAdapter);
         loadAsyncTask.execute();
-
         return v;
     }
 

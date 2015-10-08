@@ -68,6 +68,8 @@ public class NotesAdapter extends BaseAdapter implements View.OnClickListener{
         return convertView;
     }
 
+
+
     //for the delete button
     @Override
     public void onClick(View v) {
