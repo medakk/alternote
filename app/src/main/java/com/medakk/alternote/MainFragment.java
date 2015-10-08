@@ -59,6 +59,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent i = new Intent(getActivity(), NoteActivity.class);
+                i.putExtra(NoteActivity.EXTRA_NOTE_INDEX, position);
                 startActivity(i);
             }
         });
@@ -81,6 +82,7 @@ public class MainFragment extends Fragment {
         //start an AsyncTask to load the notes from the saved JSON file
         SaveAndLoad.LoadAsyncTask loadAsyncTask = new SaveAndLoad.LoadAsyncTask(getActivity(), notesAdapter);
         loadAsyncTask.execute();
+
         return v;
     }
 
@@ -92,5 +94,14 @@ public class MainFragment extends Fragment {
                 new SaveAndLoad.SaveNotesAsync(getActivity());
         saveNotesAsync.execute();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(notesAdapter != null) {
+            notesAdapter.notifyDataSetChanged();
+        }
     }
 }

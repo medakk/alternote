@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="toast_cant_save">Unable to save notes</string>
     <string name="toast_cant_load">Unable to load notes</string>
+    <string name="toast_cant_open_note">Unable to open note</string>
 </resources>

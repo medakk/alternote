@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+                android:descendantFocusability="blocksDescendants"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -10,6 +12,7 @@
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="4dp"
+        android:textIsSelectable="false"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
@@ -21,6 +24,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
+        android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="25dp"/>
 
@@ -32,6 +36,7 @@
         android:textSize="14sp"
         android:layout_below="@id/lvitem_tv_note_title"
         android:layout_marginLeft="8dp"
+        android:textIsSelectable="false"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
