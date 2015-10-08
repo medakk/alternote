@@ -41,6 +41,12 @@ public class SaveAndLoad {
         protected Void doInBackground(Void... params) {
             final NoteManager noteManager = NoteManager.getNoteManager();
 
+            //check if NoteManager is dirty
+            if(!noteManager.isDirty()) {
+                Log.d("SaveAsyncTask", "NoteManager isn't dirty. Skipping save.");
+                return null;
+            }
+
             JSONArray jsonArray;
             try {
                 jsonArray = new JSONArray();
@@ -66,6 +72,7 @@ public class SaveAndLoad {
                 return null;
             }
 
+            noteManager.clearDirtyFlag();
             return null;
         }
 
@@ -138,6 +145,7 @@ public class SaveAndLoad {
                 errorOccured = true;
                 return null;
             }
+            noteManager.clearDirtyFlag();
             return null;
         }
 

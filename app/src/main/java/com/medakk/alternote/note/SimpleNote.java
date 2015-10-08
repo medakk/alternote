@@ -15,6 +15,7 @@ public class SimpleNote {
      * ie: it doesn't need to be retained(saved/loaded)
      */
     private UUID uuid;
+    public boolean dirty;
 
     private String title;
     private String content;
@@ -24,6 +25,7 @@ public class SimpleNote {
         this.content = content;
 
         uuid = UUID.randomUUID();
+        dirty = false;
     }
 
     public String getTitle() {
@@ -36,6 +38,12 @@ public class SimpleNote {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public void set(String title, String content) {
+        this.title = title;
+        this.content = content;
+        dirty = true;
     }
 
     private static final String JSON_TITLE = "title";

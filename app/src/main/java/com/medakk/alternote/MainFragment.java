@@ -76,6 +76,10 @@ public class MainFragment extends Fragment {
 
                 //clear the EditText box
                 etQuickNote.setText("");
+
+                //TODO: the following two lines hide the soft key board :p use something else
+                etQuickNote.setEnabled(false);
+                etQuickNote.setEnabled(true);
             }
         });
 

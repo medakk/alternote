@@ -28,8 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="25dp"/>
 
-
-
     <TextView
         android:text="content...\nmore content...\neven more content..."
         android:id="@+id/lvitem_tv_note_content"

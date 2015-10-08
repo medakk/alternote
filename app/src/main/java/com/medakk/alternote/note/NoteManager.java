@@ -13,6 +13,9 @@ import java.util.UUID;
  * Singleton class
  */
 public class NoteManager implements Iterable<SimpleNote> {
+
+    private boolean dirty = true;
+
     private ArrayList<SimpleNote> alNotes;
 
     // Singleton methods
@@ -45,14 +48,17 @@ public class NoteManager implements Iterable<SimpleNote> {
         }
 
         alNotes.add(n);
+        dirty = true;
     }
 
     public void removeNote(int index) {
         alNotes.remove(index);
+        dirty = true;
     }
 
     public void removeNote(SimpleNote n) {
         alNotes.remove(n);
+        dirty = true;
     }
 
     public SimpleNote getNote(int n) {
@@ -61,6 +67,7 @@ public class NoteManager implements Iterable<SimpleNote> {
 
     public void clear() {
         alNotes.clear();
+        dirty = true;
     }
 
     public int findNoteByUuid(UUID uuid) {
@@ -74,6 +81,24 @@ public class NoteManager implements Iterable<SimpleNote> {
         }
 
         return foundNoteIndex;
+    }
+
+    public boolean isDirty() {
+        if(dirty)
+            return true;
+
+        for(SimpleNote n : this) {
+            if(n.dirty)
+                return true;
+        }
+
+        return false;
+    }
+
+    public void clearDirtyFlag() {
+        dirty = false;
+        for(SimpleNote n : this)
+            n.dirty = false;
     }
 
     @Override
