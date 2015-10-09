@@ -25,7 +25,7 @@ public class SimpleNote {
         this.content = content;
 
         uuid = UUID.randomUUID();
-        dirty = false;
+        dirty = true;
     }
 
     public String getTitle() {
