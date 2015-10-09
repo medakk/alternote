@@ -33,8 +33,7 @@ public class NoteActivity extends FragmentActivity {
         /*
          * TODO:
          * this is temporary. we need to identify the type of note,
-         * open the appropriate fragment, and add the received
-         * note index to the bundle we pass to the fragment
+         * open the appropriate fragment
          */
         final FragmentManager fm = getSupportFragmentManager();
         Fragment f  = new SimpleNoteFragment();

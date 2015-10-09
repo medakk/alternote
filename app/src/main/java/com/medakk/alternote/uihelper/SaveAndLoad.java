@@ -31,7 +31,7 @@ public class SaveAndLoad {
 
         private final Context context;
 
-        private boolean errorOccured = false;
+        private boolean errorOccurred = false;
 
         public SaveNotesAsync(Context context) {
             this.context = context;
@@ -58,7 +58,7 @@ public class SaveAndLoad {
                     jsonArray.put(jsonNote);
                 }
             } catch (JSONException e) {
-                errorOccured = true;
+                errorOccurred = true;
                 return null;
             }
 
@@ -68,7 +68,7 @@ public class SaveAndLoad {
                 fos.write(jsonArray.toString().getBytes());
                 fos.close();
             } catch(Exception e) {
-                errorOccured = true;
+                errorOccurred = true;
                 return null;
             }
 
@@ -78,7 +78,7 @@ public class SaveAndLoad {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(errorOccured) {
+            if(errorOccurred) {
                 Toast.makeText(context, R.string.toast_cant_save, Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -91,7 +91,7 @@ public class SaveAndLoad {
         private final WeakReference<NotesAdapter> wrNotesAdapter;
         private final byte[] byteBuffer = new byte[1024];
 
-        private boolean errorOccured = false;
+        private boolean errorOccurred = false;
 
         public LoadAsyncTask(Context context, NotesAdapter notesAdapter) {
             this.context = context;
@@ -124,7 +124,7 @@ public class SaveAndLoad {
 
                 fis.close();
             } catch(java.io.IOException e) {
-                errorOccured = true;
+                errorOccurred = true;
                 return null;
             }
 
@@ -142,7 +142,7 @@ public class SaveAndLoad {
                 }
 
             } catch(JSONException e) {
-                errorOccured = true;
+                errorOccurred = true;
                 return null;
             }
             noteManager.clearDirtyFlag();
@@ -151,7 +151,7 @@ public class SaveAndLoad {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(errorOccured) {
+            if(errorOccurred) {
                 Toast.makeText(context, R.string.toast_cant_load, Toast.LENGTH_SHORT).show();
                 return;
             }
