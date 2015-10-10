@@ -1,4 +1,4 @@
-package com.medakk.alternote;
+package com.medakk.alternote.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.medakk.alternote.R;
 import com.medakk.alternote.note.NoteManager;
 import com.medakk.alternote.note.SimpleNote;
+import com.medakk.alternote.ui.activity.NoteActivity;
 import com.medakk.alternote.uihelper.SaveAndLoad;
 import com.medakk.alternote.util.Helper;
 
