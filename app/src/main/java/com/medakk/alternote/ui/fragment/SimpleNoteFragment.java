@@ -26,7 +26,6 @@ public class SimpleNoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_simple_note, container, false);
         final int noteIndex = getArguments().getInt(NoteActivity.BUNDLE_NOTE_INDEX, -1);
-
         final NoteManager noteManager = NoteManager.getNoteManager();
         note = noteManager.getNote(noteIndex);
 
