@@ -17,7 +17,7 @@ import java.util.UUID;
  * NotesAdapter
  *  -used to populate lvNotes in MainActivityFragment
  */
-public class NotesAdapter extends BaseAdapter implements View.OnClickListener{
+public class NotesAdapter extends BaseAdapter{
 
     private Context context;
     private NoteManager noteManager;
@@ -29,6 +29,16 @@ public class NotesAdapter extends BaseAdapter implements View.OnClickListener{
 
     public void addNote(SimpleNote n) {
         noteManager.addNote(n);
+        super.notifyDataSetChanged();
+    }
+
+    public void addNote(int position, SimpleNote note) {
+        noteManager.addNote(position, note);
+        super.notifyDataSetChanged();
+    }
+
+    public void removeNote(int position) {
+        noteManager.removeNote(position);
         super.notifyDataSetChanged();
     }
 
@@ -49,37 +59,18 @@ public class NotesAdapter extends BaseAdapter implements View.OnClickListener{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null) {
-            convertView = View.inflate(context, R.layout.lvitem_note, null);
-
-            final ImageButton ibtnDelete = (ImageButton) convertView.findViewById(R.id.lvitem_ibtn_delete);
-            ibtnDelete.setOnClickListener(this);
-        }
+        // because of a bug with the SwipeToDismissListViewListener,
+        // we aren't trying to reuse the views
+        // TODO: reuse views after the SwipeToDismiss listener is fixed
+        convertView = View.inflate(context, R.layout.lvitem_note, null);
 
         final TextView tvTitle = (TextView) convertView.findViewById(R.id.lvitem_tv_note_title);
         final TextView tvContent = (TextView) convertView.findViewById(R.id.lvitem_tv_note_content);
-        final ImageButton ibtnDelete = (ImageButton) convertView.findViewById(R.id.lvitem_ibtn_delete);
 
         SimpleNote n = (SimpleNote) getItem(position);
         tvTitle.setText(n.getTitle());
         tvContent.setText(n.getContent());
-        ibtnDelete.setTag(n.getUuid());
 
         return convertView;
-    }
-
-
-
-    //for the delete button
-    @Override
-    public void onClick(View v) {
-        UUID uuid = (UUID) v.getTag();
-
-        int foundNoteIndex = noteManager.findNoteByUuid(uuid);
-
-        if(foundNoteIndex != -1) {
-            noteManager.removeNote(foundNoteIndex);
-            this.notifyDataSetChanged();
-        }
     }
 }

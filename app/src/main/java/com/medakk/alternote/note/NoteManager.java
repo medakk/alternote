@@ -51,6 +51,21 @@ public class NoteManager implements Iterable<SimpleNote> {
         dirty = true;
     }
 
+    public void addNote(int position, SimpleNote n) {
+        if(n == null) {
+            Log.d("NoteManager", "Attempting to add null note");
+            return;
+        }
+
+        //make sure there is some content in the note's title, ie: it isn't just whitespace
+        if(Helper.onlyContainsWhitespace(n.getTitle())) {
+            return;
+        }
+
+        alNotes.add(position, n);
+        dirty = true;
+    }
+
     public void removeNote(int index) {
         alNotes.remove(index);
         dirty = true;

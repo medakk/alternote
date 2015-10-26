@@ -6,4 +6,6 @@
     <string name="toast_cant_save">Unable to save notes</string>
     <string name="toast_cant_load">Unable to load notes</string>
     <string name="toast_cant_open_note">Unable to open note</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="undo">Undo</string>
 </resources>
